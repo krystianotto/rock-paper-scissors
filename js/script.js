@@ -2,15 +2,17 @@ function playGame(playerInput){
     
     clearMessages()
 
-    let playerMove = getMoveName(playerInput);
+    const playerMove = getMoveName(playerInput);
     
-    let randomNumber = Math.floor(Math.random() *3 +1);
-    let computerMove = getMoveName(randomNumber);
+    const randomNumber = Math.floor(Math.random() * 3 + 1);
+    const computerMove = getMoveName(randomNumber);
+    console.log(computerMove)
 
     function getMoveName(moveId){
-        if (moveId == 1){
+        // moveId === 1 ? 'rock' : moveId === 2 ? 'paper' : 'scissors';
+        if (moveId === 1){
             return 'rock'
-        }else if(moveId == 2){
+        }else if(moveId === 2){
             return 'paper'
         }else{
             return 'scissors'
@@ -19,26 +21,18 @@ function playGame(playerInput){
 
     function displayResult(computerMove, playerMove){
         printMessage('You play ' + playerMove + ',' + 'computer plays ' + computerMove)
-        if (playerMove == computerMove){
+        if ((playerMove === 'rock' && computerMove === 'scissors') || (playerMove === 'scissors' && computerMove === 'paper') || (playerMove === 'paper' && computerMove === 'rock')){
+            printMessage('You win !')
+        }else if((playerMove === 'rock' && computerMove === 'paper') || (playerMove === 'scissors' && computerMove === 'rock') || (playerMove === 'paper' && computerMove === 'scissors')){
+            printMessage('You lose')
+        }else{
             printMessage('Draw !')
-        }else if(playerMove == 'rock' && computerMove == 'paper'){
-            printMessage('You lose')
-        }else if(playerMove == 'rock' && computerMove == 'scissors'){
-            printMessage('You win')
-        }else if(playerMove == 'scissors' && computerMove == 'paper'){
-            printMessage('You win')
-        }else if(playerMove == 'scissors' && computerMove == 'rock'){
-            printMessage('You lose')
-        }else if(playerMove == 'paper' && computerMove == 'scissors'){
-            printMessage('You lose')
-        }else if(playerMove == 'paper' && computerMove == 'rock'){
-            printMessage('You win')
-        }
+        };
     };
 
     displayResult(computerMove, playerMove);
 };
 
 document.getElementById('btn-rock').addEventListener('click',function(){playGame(1)});
-document.getElementById('btn-paper').addEventListener('click',function(){playGame(1)});
-document.getElementById('btn-scissors').addEventListener('click',function(){playGame(1)});
+document.getElementById('btn-paper').addEventListener('click',function(){playGame(2)});
+document.getElementById('btn-scissors').addEventListener('click',function(){playGame(3)});
