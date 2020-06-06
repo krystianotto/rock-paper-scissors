@@ -4,6 +4,8 @@ function playGame(playerInput){
     const randomNumber = Math.floor(Math.random() * 3 + 1);
     const computerMove = getMoveName(randomNumber);
 
+    clearMessage();
+
     function getMoveName(moveId){
         if (moveId === 1){
             return 'rock'
@@ -18,10 +20,12 @@ function playGame(playerInput){
         //printMessage('You play ' + playerMove + ',' + 'computer plays ' + computerMove);
         if ((playerMove === 'rock' && computerMove === 'scissors') || (playerMove === 'scissors' && computerMove === 'paper') || (playerMove === 'paper' && computerMove === 'rock')){
             winGame();
+            gameMessage.innerHTML = 'Players ' + playerMove + ' beats ' + 'computers ' + computerMove;
         }else if((playerMove === 'rock' && computerMove === 'paper') || (playerMove === 'scissors' && computerMove === 'rock') || (playerMove === 'paper' && computerMove === 'scissors')){
             loseGame();
+            gameMessage.innerHTML = 'computers ' + computerMove + ' beats ' + 'Players ' + playerMove;
         }else{
-            console.log('Draw !')
+            gameMessage.innerHTML = "It's a drawwwww !";
         };
     };
 
@@ -43,12 +47,18 @@ function playGame(playerInput){
         (computerScore == roundToPlay) || (playerScore == roundToPlay) ? confirm('Game Over') : false;
     }
 
+    function clearMessage(){
+        gameMessage.innerHTML = '';
+    }
+
+    
     gameResult(computerMove, playerMove);
 };
 
 const roundToPlay = prompt('What score should end the game ? Put a number Down there','0')
 const playerScore_span = document.getElementById('player-score');
 const computerScore_span = document.getElementById('computer-score');
+const gameMessage = document.getElementById('game-message');
 let playerScore = 0;
 let computerScore = 0;
 
