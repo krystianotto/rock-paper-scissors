@@ -1,0 +1,38 @@
+/* Global */
+
+*, *::after, *::before{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    font-family: 'Metal Mania', cursive;
+}
+
+.container{
+    max-width: 1140;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#game-message, span{
+   font-size: 35px;
+   padding: 30px 10px; 
+}
+
+.btn{
+    width: 200px;
+    height: 200px;
+    background-color: #8fe3c3;
+    border-radius: 50%;
+    line-height: 200px;
+    border: none;
+    //color: #a81e5c;
+    color: #f545a5;
+    font-size: 100px;
+    margin-top: 30px;
+}
+
+button:focus{
+    outline: 0;
+}
