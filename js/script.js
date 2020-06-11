@@ -1,3 +1,4 @@
+{
 function playGame(playerInput){
 
     const playerMove = getMoveName(playerInput);
@@ -71,3 +72,4 @@ document.getElementById('btn-paper').addEventListener('click',function(){
 document.getElementById('btn-scissors').addEventListener('click',function(){
     playGame(3)
 });
+}
